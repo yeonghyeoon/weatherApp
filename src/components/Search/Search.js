@@ -3,7 +3,6 @@ const Search = (props) => {
     <form>
       <input
         placeholder=""
-        // value={props.searchValue}
         onChange={(event) => {
           props.handleCity(event.target.value);
         }}
