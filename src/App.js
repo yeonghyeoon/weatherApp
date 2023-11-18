@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import Weather from './components/Weather';
 
 
 function App() {
@@ -32,8 +33,12 @@ function App() {
 
   return (
     <div className="App">
-      <input />
-      {/* <button /> */}
+      <div className=''>
+        <input />
+        {/* <button /> */}  
+      </div>
+      <Weather />
+      
     </div>
   );
 }
