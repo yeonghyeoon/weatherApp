@@ -1,5 +1,5 @@
-function () {
-    return (  );
+function City() {
+    return <></>;
 }
 
-export default ;
+export default City;
