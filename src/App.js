@@ -13,7 +13,7 @@ function App() {
   
   // const url = ""
   useEffect(() => {
-     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
     .then((response) => {
       console.log(response.data)
       setCity(response.data)
@@ -22,7 +22,7 @@ function App() {
       console.log(error)
     })
   }, [])
- 
+
 
 
 
@@ -37,7 +37,8 @@ function App() {
         <input />
         {/* <button /> */}  
       </div>
-      <Weather />
+      <Weather 
+      humidity={city.weather}/>
       
     </div>
   );
