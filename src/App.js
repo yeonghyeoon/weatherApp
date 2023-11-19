@@ -56,6 +56,9 @@ function App() {
       <WeatherDisplay imgSrc={imgSrc} city={city} />
 
       <Weather weatherData={weatherData} mainData={mainData} wind={wind} />
+      <div>
+        Hello
+      </div>
     </div>
   );
 }
