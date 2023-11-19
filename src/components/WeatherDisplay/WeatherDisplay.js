@@ -1,7 +1,10 @@
+import "./WeatherDisplay.scss"
+
 const WeatherDisplay = (props) => {
+
   return (
-    <div>
-      <img src={props.imgSrc} alt={props.city} />
+    <div className="weather__display">
+      <img className="weather__display-image" src={props.imgSrc} />
     </div>
   );
 };
