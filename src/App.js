@@ -7,8 +7,8 @@ import Header from "./components/Header/Header";
 import City from "./components/City/City";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
-import weatherImages from "./data/weatherImages.json";
 import nightSky from "../src/assets/images/nightSky.jpg";
+import nightIcons from "./data/nightIcons.json";
 
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
 
   const getImg = (weatherIcon) => {
     let src;
-    weatherImages.forEach((img) => {
+    nightIcons.forEach((img) => {
       if (img.mainName === weatherIcon) {
         src = img.src;
         console.log(src);
@@ -71,10 +71,12 @@ function App() {
   return (
     <div className="App" style={checkHours}>
       <Header />
-      <Search getData={getData} handleCity={handleCity} />
-      <div className="weather__card">
-        <WeatherDisplay imgSrc={imgSrc} city={city} />
-        <Weather weatherData={weatherData} mainData={mainData} wind={wind} time={time} city={city}/>
+      <div className="weather__background">
+        <Search getData={getData} handleCity={handleCity} />
+        <div className="weather__card">
+          <WeatherDisplay imgSrc={imgSrc} city={city} />
+          <Weather weatherData={weatherData} mainData={mainData} wind={wind} time={time} city={city}/>
+        </div>
       </div>
     </div>
   );
