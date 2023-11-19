@@ -4,26 +4,29 @@
 }
 
 .App {
-    background-color: rgba(255, 250, 240, 0.864);
+    background-color: #eeeeff;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 8%;
 }
 
 .weather {
+    &__card {
+        width: 80%;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
     &__background {
-        width: 80%;
+        padding: 20px;
+        margin: 10px;
+        width: 70%;
         border: 1px solid rgba(0, 0, 0, 0.452);
-        border-radius: 5px;
+        border-radius: 25px;
         background-image: url("https://www.wkbn.com/wp-content/uploads/sites/48/2021/03/clouds-cloudy-sky-spring-summer-fall-winter-weather-generic-8-1.jpg?w=1280");
         background-size: cover;
     }
 
-    &__card {
-        background-color: rgba(155, 154, 154, 0.216);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }

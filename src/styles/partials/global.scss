@@ -1,0 +1,10 @@
+@import './mixins';
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    box-sizing: border-box;
+    margin:0;
+}
