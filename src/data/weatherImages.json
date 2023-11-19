@@ -1,10 +1,14 @@
 [
     {
         "mainName": "clouds",
-        "src": "http://www.w3.org/2000/svg"
+        "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-night.svg"
     },
     {
         "mainName": "clear",
         "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-night.svg"
+    },
+    {
+        "mainName": "rain",
+        "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thunderstorms-rain.svg"
     }
 ]
