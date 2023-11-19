@@ -6,8 +6,8 @@ import './Header.scss';
 const Header = () => {
   return (
     <div className="header">
-      <div className="header__logo">
-        <img src={appLogo} className="appLogo" alt="app-logo" />
+      <img src={appLogo} className="appLogo" alt="app-logo" />
+      <div className="header__icons">
         <img src={shareLogo} className="shareLogo" alt="send-logo" />
         <img src={gpsLogo} className="gpsLogo" alt="gps-logo" />  
       </div>
