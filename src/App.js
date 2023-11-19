@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import City from "./components/City/City";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
-import weatherImages from "./data/weatherImages.json";
+import nightIcons from "./data/nightIcons.json";
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
 
   const getImg = (weatherIcon) => {
     let src;
-    weatherImages.forEach((img) => {
+    nightIcons.forEach((img) => {
       if (img.mainName === weatherIcon) {
         src = img.src;
         console.log(src);
