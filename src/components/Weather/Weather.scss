@@ -1,0 +1,14 @@
+.weather {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__card {
+        width: 80%;
+        height: 300px;
+        border: 1px solid black;
+        border-radius: 5px;
+
+    }
+}
