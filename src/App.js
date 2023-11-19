@@ -35,6 +35,7 @@ function App() {
   };
 
   const handleCity = (cityName) => {
+  
     setCity(cityName);
   };
 
