@@ -13,6 +13,7 @@
     &__temperature {
         display: flex;
         flex-direction: row;
+        justify-content: center;
     }
 
     &__temperature-text {
@@ -29,6 +30,7 @@
     &__title {
         font-size: 14px;
         text-align: center;
+        color: white;
     }
 
     &__stats {
@@ -37,10 +39,17 @@
         justify-content: space-evenly;
         align-items: center;
         padding: 20px 0;
+        width: 340px;
+        background-color: rgba(0, 0, 0, 0.147);
     }
 
     &__speed, &__degrees {
         width: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
     }
 
     &__speed-header {
@@ -54,6 +63,18 @@
 
     &__subtext {
         text-align: center;
+        padding: 12px 0;
+        font-weight: 600;
+
+    }
+
+    &__degrees-header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__degrees-icon {
+        width: 50px;
     }
 
 }
