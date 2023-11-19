@@ -1,6 +1,14 @@
 [
     {
         "mainName": "clouds",
-        "src": "https://t4.ftcdn.net/jpg/01/63/32/85/360_F_163328561_DYhSlFzLkIyTUpsTMFh03MTuy134nukr.jpg"
+        "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-night.svg"
+    },
+    {
+        "mainName": "clear",
+        "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-night.svg"
+    },
+    {
+        "mainName": "rain",
+        "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thunderstorms-rain.svg"
     }
 ]

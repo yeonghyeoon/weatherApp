@@ -1,16 +1,33 @@
+import './Weather.scss'
+
 function Weather(props) {
+
+  let time = new Date().toLocaleTimeString()
+
   return (
-    <div>
-      <h3>Description</h3>
-      <p>{props.weatherData.description}</p>
-      <h3>Main</h3>
-      <p>{props.weatherData.main}</p>
-      <h3>wind speed</h3>
-      <p>{props.wind.speed} m/s</p>
-      <h3>wind degree</h3>
-      <p>{props.wind.deg} °</p>
-      <h3>main </h3>
-      <p>{props.mainData.temp} °C</p>
+    <div className="weather__details">
+      <h3 className="weather__city">{props.city}</h3>
+
+      <h2 className="weather__title">Temperature</h2>
+      <p className="weather__subtext">{props.mainData.temp}°C</p>
+      
+      <p className="weather__subtext">{props.weatherData.description}</p>
+      <p className="weather__subtext">{props.weatherData.main}</p>
+
+      <div className="weather__stats">
+        <div className="weather__speed">
+          <h2 className="weather__title">Wind <br/> Speed</h2>
+          <p className="weather__subtext">{props.wind.speed} km/h</p>
+        </div>
+
+        <div className='weather__degrees'>
+          <h2 className="weather__title">Wind <br/> Degrees</h2>
+          <p className="weather__subtext">{props.wind.deg}°</p>
+        </div>
+      </div>
+      
+      <h2 className="weather__title">Current Time</h2>
+      <p className="weather__subtext">{time}</p>
     </div>
   );
 }
