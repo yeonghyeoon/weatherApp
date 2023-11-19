@@ -13,6 +13,15 @@
 .weather {
 
     &__background {
+        @keyframes animatedBackground {
+            from {
+            background-position: 0 0;
+            }
+            to {
+            background-position: 100% 0;
+            }
+        }
+
         width: 80%;
         border: 1px solid rgba(0, 0, 0, 0.452);
         border-radius: 5px;
