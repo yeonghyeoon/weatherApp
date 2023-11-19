@@ -1,45 +1,64 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
-import Weather from './components/Weather';
-
-
+import "./App.css";
+import React, { useState } from "react";
+import axios from "axios";
+import Weather from "./components/Weather/Weather";
+import Search from "./components/Search/Search";
+import Header from "./components/Header/Header";
+import City from "./components/City/City";
+import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
+// api key
+import { apiKey } from "./components/utilities/api";
+// data
+import weatherImages from "./data/weatherImages.json";
 function App() {
+  const [city, setCity] = useState("");
+  const [imgSrc, setImgSrc] = useState("");
+  const [weatherData, setWeatherData] = useState("");
+  const [mainData, setMainData] = useState("");
+  const [wind, setWind] = useState("");
 
+  const getData = () => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+      )
+      .then((response) => {
+        setWeatherData(response.data.weather[0]);
+        setMainData(response.data.main);
+        setWind(response.data.wind);
+        console.log(response.data);
+        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  const [ city, setCity ] = useState("Toronto")
+  const handleCity = (cityName) => {
+    setCity(cityName);
+  };
 
-  const apiKey = "f674e616810a6019adbaa5b42a09cdbf"
-  
-  // const url = ""
-  useEffect(() => {
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-    .then((response) => {
-      console.log(response.data)
-      setCity(response.data)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }, [])
-
-
-
-
-  // const cityName = () => {
-
-  // }
-
+  const getImg = (weatherIcon) => {
+    let src;
+    weatherImages.forEach((img) => {
+      if (img.mainName === weatherIcon) {
+        src = img.src;
+        console.log(src);
+      }
+    });
+    return src;
+  };
 
   return (
     <div className="App">
-      <div className=''>
-        <input />
-        {/* <button /> */}  
+      <Header />
+      <Search getData={getData} handleCity={handleCity} />
+      <WeatherDisplay imgSrc={imgSrc} city={city} />
+
+      <Weather weatherData={weatherData} mainData={mainData} wind={wind} />
+      <div>
+        Hello
       </div>
-      <Weather 
-      humidity={city.weather}/>
-      
     </div>
   );
 }
