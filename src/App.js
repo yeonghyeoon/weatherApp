@@ -20,7 +20,7 @@ function App() {
   const getData = () => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
       )
       .then((response) => {
         setWeatherData(response.data.weather[0]);

@@ -6,11 +6,11 @@ function Weather(props) {
       <h3>Main</h3>
       <p>{props.weatherData.main}</p>
       <h3>wind speed</h3>
-      <p>{props.wind.speed}</p>
+      <p>{props.wind.speed} m/s</p>
       <h3>wind degree</h3>
-      <p>{props.wind.deg}</p>
+      <p>{props.wind.deg} °</p>
       <h3>main </h3>
-      <p>{props.mainData.temp}</p>
+      <p>{props.mainData.temp} °C</p>
     </div>
   );
 }
