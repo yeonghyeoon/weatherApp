@@ -1,5 +1,4 @@
 .weather {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,11 +11,19 @@
     }
 
     &__temperature {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__temperature-text {
         font-size: 32px;
         font-weight: bold;
         text-align: center;
         padding: 1rem 0;
+    }
 
+    &__temperature-icon {
+        width: 50px;
     }
 
     &__title {
@@ -33,7 +40,16 @@
     }
 
     &__speed, &__degrees {
-        width: 75px;
+        width: 100px;
+    }
+
+    &__speed-header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__speed-icon {
+        width: 50px;
     }
 
     &__subtext {
