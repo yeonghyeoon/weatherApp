@@ -8,6 +8,7 @@ import City from "./components/City/City";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
 import weatherImages from "./data/weatherImages.json";
+import nightSky from "../src/assets/images/nightSky.jpg";
 
 
 function App() {
@@ -52,8 +53,23 @@ function App() {
     return src;
   };
 
+  let realTime = new Date();
+  let realHour = realTime.getHours();
+  console.log(realHour)
+  const nightTime = {
+    backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    color: "white"
+
+  }
+  const dayTime = {
+    backgroundImage: `url("https://art.ngfiles.com/images/390000/390126_conquestus_sky-daytime.jpg?f1448575610")`
+  }
+
+  const checkHours = (realHour >= 17) ? nightTime : dayTime ;
   return (
-    <div className="App">
+    <div className="App" style={checkHours}>
       <Header />
       <Search getData={getData} handleCity={handleCity} />
       <div className="weather__card">
