@@ -6,10 +6,14 @@ function Weather(props) {
 
   return (
     <div className="weather__details">
+
+      <h2 className="weather__title">Current Time</h2>
+      <p className="weather__subtext">{time}</p>
+
       <h3 className="weather__city">{props.city}</h3>
 
       <h2 className="weather__title">Temperature</h2>
-      <p className="weather__subtext">{props.mainData.temp}°C</p>
+      <p className="weather__temperature">{props.mainData.temp}°C</p>
       
       <p className="weather__subtext">{props.weatherData.description}</p>
       <p className="weather__subtext">{props.weatherData.main}</p>
@@ -26,8 +30,6 @@ function Weather(props) {
         </div>
       </div>
       
-      <h2 className="weather__title">Current Time</h2>
-      <p className="weather__subtext">{time}</p>
     </div>
   );
 }

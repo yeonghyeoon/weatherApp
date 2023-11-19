@@ -55,10 +55,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Search getData={getData} handleCity={handleCity} />
-      <div className="weather__card">
-        <WeatherDisplay imgSrc={imgSrc} city={city} />
-        <Weather weatherData={weatherData} mainData={mainData} wind={wind} time={time} city={city}/>
+      <div className="weather__background">
+        <Search getData={getData} handleCity={handleCity} />
+        <div className="weather__card">
+          <WeatherDisplay imgSrc={imgSrc} city={city} />
+          <Weather weatherData={weatherData} mainData={mainData} wind={wind} time={time} city={city}/>
+        </div>
       </div>
     </div>
   );
