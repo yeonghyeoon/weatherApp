@@ -1,0 +1,23 @@
+.form-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-location {
+  width: 50vw;
+  height: 3vh;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+.input-location::-moz-placeholder {
+  padding-left: 10px;
+}
+.input-location::placeholder {
+  padding-left: 10px;
+}
+
+.search-btn {
+  background-color: white;
+  border: none;
+}/*# sourceMappingURL=Search.css.map */
