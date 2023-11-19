@@ -6,7 +6,6 @@ const Search = (props) => {
   const searchLocation = (e) => {
     if(e.key === 'Enter') {
       props.getData();
-      
     }
     return;
   }
