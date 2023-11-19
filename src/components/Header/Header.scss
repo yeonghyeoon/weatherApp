@@ -1,4 +1,8 @@
 .header {
+    width: 100%;
+}
+
+.header__logo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,8 +15,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 2% 5% 2% 5%;
 }
 .shareLogo {
     width: 25px;
