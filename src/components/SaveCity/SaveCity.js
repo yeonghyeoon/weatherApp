@@ -1,3 +1,5 @@
+import '../SaveCity/SaveCity.scss'
+
 const SaveCity = (props) => {
   const returnSaveCityList = () => {
     if (props.saveCityData.length > 0) {
@@ -17,7 +19,6 @@ const SaveCity = (props) => {
     <div>
       <h1>Saved city</h1>
       <div>{returnSaveCityList()}</div>
-    </div>
   );
 };
 export default SaveCity;

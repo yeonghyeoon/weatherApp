@@ -4,7 +4,6 @@ import axios from "axios";
 import Weather from "./components/Weather/Weather";
 import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
-// import City from "./components/City/City";
 import SaveCity from "./components/SaveCity/SaveCity";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
