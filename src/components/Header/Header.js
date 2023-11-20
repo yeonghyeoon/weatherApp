@@ -3,7 +3,7 @@ import gpsLogo from "../../assets/icons/gps.svg";
 import './Header.scss';
 import appLogo from "../../assets/icons/applogo.png"
 import menuLogo from "../../assets/icons/menu.png";
-import addingLogo from "../../assets/icons/add logo.svg";
+import addingLogo from "../../assets/icons/add logo.png";
 
 const Header = () => {
   
@@ -11,11 +11,11 @@ const Header = () => {
 
   return (
     <div className="header">
+      <img className="header__logo" src={appLogo} alt="app-logo" />
       <div className="header__icons">
-        <img src={menuLogo} className="header__logo-menuLogo" alt="send-logo" />
-        <img className="header__logo" src={appLogo} alt="app-logo" />
+        <img src={menuLogo} className="header__logo-menuLogo" alt="menu-logo" />
         <button type="button" className="header__btn">
-          <img src={addingLogo} className="header__logo-addingLogo" alt="gps-logo" />
+          <img src={addingLogo} className="header__logo-addingLogo" alt="add-logo" />
         </button>  
       </div>
       
