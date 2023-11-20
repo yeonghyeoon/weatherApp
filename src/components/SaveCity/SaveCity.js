@@ -19,6 +19,14 @@ const SaveCity = (props) => {
             <p className="saved__cities-description">{saveCity.description}</p>
             <p>{saveCity.windSpeed} km/h</p>
           </div>
+          {/* Delete city */}
+          <button
+          className="weather__button--delete"
+          onClick={(e) => {
+            props.handleCityDelete();
+          }}>
+            Remove from Favourite
+          </button>
         </div>
       ));
     }
