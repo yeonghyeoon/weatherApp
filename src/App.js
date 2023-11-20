@@ -58,14 +58,34 @@ function App() {
 
   // // handle city posting
   const handleCityPost = () => {
-    axios
-      .post(`${localURL}/cities`, { city: city })
-      .then((response) => {
-        setSaveCityData(...saveCityData, response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (city) {
+      axios
+        .post(`${localURL}/cities`, { city: city })
+        .then((response) => {
+          const responseCityId = response.data.id; // get posted city id
+          const responseCityName = response.data.city; // get posted city name
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
+            )
+            .then((response) => {
+              // storing posted city data into an object
+              const cityData = {
+                id: responseCityId,
+                city: response.data.name,
+                temp: response.data.main.temp,
+                description: response.data.weather[0].description,
+                windSpeed: response.data.wind.speed,
+                windDegree: response.data.wind.deg,
+              };
+              // setting saveCityData with existing value
+              setSaveCityData([...saveCityData, cityData]);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   // getting city list from the
@@ -105,7 +125,7 @@ function App() {
             console.log(err);
           });
       });
-      setSaveCityData(saveCityDataArray);
+      setSaveCityData(saveCityDataArray); // set saveCityData
     }
   }, [saveCity]);
 
@@ -124,7 +144,7 @@ function App() {
           handleCityPost={handleCityPost}
         />
       </div>
-      <SaveCity saveCityData={saveCityData} />
+      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
     </div>
   );
 }

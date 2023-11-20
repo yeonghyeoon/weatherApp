@@ -32,7 +32,14 @@ function Weather(props) {
       <h2 className="weather__title">Current Time</h2>
       <p className="weather__subtext">{time}</p>
       {/* Save button */}
-      <button onClick={props.handleCityPost}>Add to Favourite</button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          props.handleCityPost();
+        }}
+      >
+        Add to Favourite
+      </button>
     </div>
   );
 }

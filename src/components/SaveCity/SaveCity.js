@@ -1,9 +1,8 @@
 const SaveCity = (props) => {
-  console.log(props.saveCityData);
   let saveCityEl;
-  if (props.saveCityData.length > 0) {
+  if (props.saveCityData) {
     saveCityEl = props.saveCityData.map((saveCity) => (
-      <div id={saveCity.id} key={saveCity.id}>
+      <div key={saveCity.id}>
         <h3>{saveCity.city}</h3>
         <p>{saveCity.temp}</p>
         <p>{saveCity.description}</p>
@@ -12,8 +11,12 @@ const SaveCity = (props) => {
       </div>
     ));
   }
-  return <div>{saveCityEl}</div>;
+
+  return (
+    <div>
+      <h1>Saved city</h1>
+      <div>{saveCityEl}</div>
+    </div>
+  );
 };
 export default SaveCity;
-
-/* */
