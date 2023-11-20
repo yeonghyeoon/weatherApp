@@ -50,7 +50,7 @@ function App() {
     });
     return src;
   };
-  
+
   // handle current city
   const handleCity = (cityName) => {
     setCity(cityName);
@@ -120,32 +120,35 @@ function App() {
             };
             saveCityDataArray.push(cityData);
           })
+          .then(() => {
+            setSaveCityData(saveCityDataArray); // set saveCityData
+          })
           .catch((err) => {
             console.log(err);
           });
       });
-      setSaveCityData(saveCityDataArray); // set saveCityData
+
+      // setSaveCityData(saveCityDataArray); // set saveCityData
     }
   }, [saveCity]);
 
   let realTime = new Date();
   let realHour = realTime.getHours();
-  console.log(realHour)
+  // console.log(realHour); // commenting out for testing
   const nightTime = {
     backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    color: "white"
-
-  }
+    color: "white",
+  };
   const dayTime = {
     backgroundImage: `url("https://www.ecolur.org/files/news/2023/02/022731150180.jpg")`,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-  }
+    backgroundSize: "cover",
+  };
 
-  const checkHours = (realHour >= 17) ? nightTime : dayTime ;
-  
+  const checkHours = realHour >= 17 ? nightTime : dayTime;
+
   return (
     <div className="App" style={checkHours}>
       <Header />
@@ -161,8 +164,9 @@ function App() {
             city={city}
             handleCityPost={handleCityPost}
           />
+        </div>
+        <SaveCity saveCityData={saveCityData} />
       </div>
-      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
     </div>
   );
 }
