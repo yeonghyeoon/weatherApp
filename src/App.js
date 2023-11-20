@@ -4,7 +4,7 @@ import axios from "axios";
 import Weather from "./components/Weather/Weather";
 import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
-import City from "./components/City/City";
+// import City from "./components/City/City";
 import SaveCity from "./components/SaveCity/SaveCity";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
@@ -32,7 +32,6 @@ function App() {
         setWind(response.data.wind);
         setTime(response.data.timezone);
         setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -118,7 +117,6 @@ function App() {
               windSpeed: response.data.wind.speed,
               windDegree: response.data.wind.deg,
             };
-            // setSaveCityData(cityData);
             saveCityDataArray.push(cityData);
           })
           .catch((err) => {
