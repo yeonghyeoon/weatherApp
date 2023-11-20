@@ -1,5 +1,5 @@
 import "../SaveCity/SaveCity.scss";
-import nightIcons from "../../data/nightIcons.json"
+import nightIcons from "../../data/nightIcons.json";
 
 const SaveCity = (props) => {
   const returnSaveCityList = () => {
@@ -16,7 +16,6 @@ const SaveCity = (props) => {
           });
           return src;
         };
-        
 
         const iconSrc = savedCityIcon(saveCity.description.toLowerCase());
 
@@ -39,14 +38,26 @@ const SaveCity = (props) => {
               <p className="saved__cities-description">{saveCity.description}</p>
               <div className="saved__cities-temp">
                 <p className="saved__cities-temperature">{saveCity.temp}°C</p>
-                <img className="saved__cities-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thermometer-colder.svg"/>
+                <img className="saved__cities-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thermometer-colder.svg" alt="temperature" />
               </div>
-              <div className="saved__cities-speed">              
+              <div className="saved__cities-speed">
                 <p>{saveCity.windSpeed} km/h</p>
-                <img className="saved__cities-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/wind.svg" />
+                <img className="saved__cities-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/wind.svg" alt="wind" />
               </div>
             </div>
+            {/* Delete city */}
+            <button
+              className="weather__button--delete"
+              onClick={(e) => {
+                props.handleCityDelete();
+              }}
+            >
+              Remove from Favourite
+            </button>
           </div>
+        );
+      });
+
           {/* Delete city */}
           <button
           className="weather__button--delete"
