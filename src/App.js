@@ -163,6 +163,7 @@ function App() {
           />
       </div>
       <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
+      </div>
     </div>
   );
 }
