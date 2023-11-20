@@ -24,9 +24,7 @@
   align-items: center;
 }
 .weather__background {
-  padding: 10px 0 30px;
-  margin: 10px;
-  width: 70%;
+  width: 85%;
   border-radius: 25px;
   background-size: cover;
 }/*# sourceMappingURL=App.css.map */

@@ -51,9 +51,9 @@ const SaveCity = (props) => {
           <button
           className="weather__button--delete"
           onClick={(e) => {
-            props.handleCityDelete();
+            props.deletingCities();
           }}>
-            Remove from Favourite
+            Remove
           </button>
         </div>
       ));
