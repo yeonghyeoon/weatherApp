@@ -55,7 +55,26 @@ function App() {
     setCity(cityName);
   };
 
-  // // handle city posting
+  // handle saved City data
+  const handleSavedCity = (cityName) => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+      )
+      .then((response) => {
+        setCity(cityName);
+        setWeatherData(response.data.weather[0]);
+        setMainData(response.data.main);
+        setWind(response.data.wind);
+        setTime(response.data.timezone);
+        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // handle city posting
   const handleCityPost = () => {
     if (city) {
       axios
@@ -126,8 +145,6 @@ function App() {
             console.log(err);
           });
       });
-
-      // setSaveCityData(saveCityDataArray); // set saveCityData
     }
   }, [saveCity]);
 
@@ -164,7 +181,10 @@ function App() {
             handleCityPost={handleCityPost}
           />
         </div>
-        <SaveCity saveCityData={saveCityData} />
+        <SaveCity
+          saveCityData={saveCityData}
+          handleSavedCity={handleSavedCity}
+        />
       </div>
     </div>
   );

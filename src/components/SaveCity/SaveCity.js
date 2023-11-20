@@ -1,10 +1,16 @@
-import '../SaveCity/SaveCity.scss'
+import "../SaveCity/SaveCity.scss";
 
 const SaveCity = (props) => {
   const returnSaveCityList = () => {
     if (props.saveCityData.length > 0) {
       return props.saveCityData.map((saveCity) => (
-        <div key={saveCity.id}>
+        <div
+          key={saveCity.id}
+          onClick={(event) => {
+            event.stopPropagation();
+            props.handleSavedCity(saveCity.city);
+          }}
+        >
           <h3>{saveCity.city}</h3>
           <p>{saveCity.temp}</p>
           <p>{saveCity.description}</p>
@@ -19,6 +25,7 @@ const SaveCity = (props) => {
     <div>
       <h1>Saved city</h1>
       <div>{returnSaveCityList()}</div>
+    </div>
   );
 };
 export default SaveCity;
