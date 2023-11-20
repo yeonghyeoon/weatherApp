@@ -9,7 +9,6 @@ import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
 import nightSky from "../src/assets/images/nightSky.jpg";
 import nightIcons from "./data/nightIcons.json";
-
 function App() {
   const [city, setCity] = useState("");
   const [imgSrc, setImgSrc] = useState("");
@@ -19,23 +18,30 @@ function App() {
   const [time, setTime] = useState("");
   const [saveCity, setSaveCity] = useState("");
   const [saveCityData, setSaveCityData] = useState([]);
+  const [warningMsgClass, setWarningMsgClass] = useState("");
   const localURL = process.env.REACT_APP_URL;
 
   const getData = () => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-      )
-      .then((response) => {
-        setWeatherData(response.data.weather[0]);
-        setMainData(response.data.main);
-        setWind(response.data.wind);
-        setTime(response.data.timezone);
-        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (!city) {
+      console.log("cannot find city, please enter city name");
+      return;
+    } else {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        )
+        .then((response) => {
+          setWeatherData(response.data.weather[0]);
+          setMainData(response.data.main);
+          setWind(response.data.wind);
+          setTime(response.data.timezone);
+          setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+          setWarningMsgClass(" ");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   // get image
