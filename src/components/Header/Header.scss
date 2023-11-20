@@ -4,6 +4,15 @@
 
 .header__logo {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    padding: 10px 0;
+}
+
+.header__icons {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin: 2% 5% 2% 5%;
