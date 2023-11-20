@@ -82,33 +82,46 @@ function App() {
 
   // handle city posting
   const handleCityPost = () => {
+    console.log(saveCity);
+    // check if current city is listed in saved city lists
     if (city) {
-      axios
-        .post(`${localURL}/cities`, { city: city })
-        .then((response) => {
-          const responseCityId = response.data.id; // get posted city id
-          const responseCityName = response.data.city; // get posted city name
+      saveCity.forEach((cityElement) => {
+        if (cityElement.city === city.toLocaleLowerCase()) {
+          console.log("Already saved");
+          return;
+        } else {
           axios
-            .get(
-              `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
-            )
+            .post(`${localURL}/cities`, { city: city })
             .then((response) => {
-              // storing posted city data into an object
-              const cityData = {
-                id: responseCityId,
-                city: response.data.name,
-                temp: response.data.main.temp,
-                description: response.data.weather[0].description,
-                windSpeed: response.data.wind.speed,
-                windDegree: response.data.wind.deg,
-              };
-              // setting saveCityData with existing value
-              setSaveCityData([...saveCityData, cityData]);
+              const responseCityId = response.data.id; // get posted city id
+              const responseCityName = response.data.city; // get posted city name
+              axios
+                .get(
+                  `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
+                )
+                .then((response) => {
+                  // storing posted city data into an object
+                  const cityData = {
+                    id: responseCityId,
+                    city: response.data.name,
+                    temp: response.data.main.temp,
+                    description: response.data.weather[0].description,
+                    windSpeed: response.data.wind.speed,
+                    windDegree: response.data.wind.deg,
+                  };
+                  // setting saveCityData with existing value
+                  setSaveCityData([...saveCityData, cityData]);
+                });
+            })
+            .then(() => {
+              return;
+            })
+            .catch((err) => {
+              console.log(err);
+              return;
             });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        }
+      });
     }
   };
 
@@ -130,6 +143,7 @@ function App() {
       .get(`${localURL}/cities`)
       .then((response) => {
         setSaveCity(response.data);
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -170,7 +184,7 @@ function App() {
   let realHour = realTime.getHours();
   // console.log(realHour); // commenting out for testing
   const nightTime = {
-    backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
+    backgroundImage: `url("https://images.unsplash.com/photo-1666287415044-2b28ebd6f96f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     color: "white",
@@ -185,8 +199,7 @@ function App() {
 
   return (
     <div className="App" style={checkHours}>
-      <Header 
-        handleCityPost={handleCityPost}/>
+      <Header handleCityPost={handleCityPost} />
       <div className="weather__background">
         <Search getData={getData} handleCity={handleCity} />
         <div className="weather__card">
