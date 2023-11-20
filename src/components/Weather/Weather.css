@@ -2,24 +2,80 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px 0;
+}
+.weather__details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
 }
 .weather__city {
   font-size: 20px;
   text-align: center;
+  padding: 1rem 0;
+}
+.weather__temperature {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.weather__temperature-text {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 0;
+}
+.weather__temperature-icon {
+  width: 50px;
 }
 .weather__title {
   font-size: 14px;
   text-align: center;
+  color: white;
 }
 .weather__stats {
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  padding: 20px 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.147);
+  border-radius: 20px;
 }
 .weather__speed, .weather__degrees {
-  width: 75px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.weather__speed-header {
+  display: flex;
+  flex-direction: row;
+}
+.weather__speed-icon {
+  width: 50px;
 }
 .weather__subtext {
   text-align: center;
+  font-weight: 600;
+}
+.weather__degrees-header {
+  display: flex;
+  flex-direction: row;
+}
+.weather__degrees-icon {
+  width: 50px;
+}
+.weather__button {
+  border: 1px white solid;
+  background-color: black;
+  height: 35px;
+  width: 135px;
+  border-radius: 20px;
+  color: white;
+  margin: 1rem 0;
 }/*# sourceMappingURL=Weather.css.map */
