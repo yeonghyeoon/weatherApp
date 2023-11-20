@@ -142,7 +142,8 @@ function App() {
     backgroundSize: "cover"
   }
 
-  const checkHours = (realHour >= 17) ? nightTime : dayTime ;
+  const checkHours = (realHour >= 17
+    ) ? nightTime : dayTime ;
   
   return (
     <div className="App" style={checkHours}>

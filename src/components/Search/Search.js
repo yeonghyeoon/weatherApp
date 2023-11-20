@@ -1,4 +1,4 @@
-import "./Search.css";
+import "./Search.scss";
 import searchIcon from "../../assets/icons/search.svg";
 
 const Search = (props) => {
