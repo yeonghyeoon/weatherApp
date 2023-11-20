@@ -1,21 +1,23 @@
+import '../SaveCity/SaveCity.scss'
+
 const SaveCity = (props) => {
   let saveCityEl;
   if (props.saveCityData) {
     saveCityEl = props.saveCityData.map((saveCity) => (
       <div key={saveCity.id}>
-        <h3>{saveCity.city}</h3>
-        <p>{saveCity.temp}</p>
-        <p>{saveCity.description}</p>
-        <p>{saveCity.windSpeed}</p>
-        <p>{saveCity.windDeg}</p>
+        <h3 className="saved__cities-city">London{saveCity.city}</h3>
+        <p className="saved__cities-temperature">80{saveCity.temp}°C</p>
+        <p className="saved__cities-description">Rainy{saveCity.description}</p>
+        {/* <p>{saveCity.windSpeed}</p>
+        <p>{saveCity.windDeg}</p> */}
       </div>
     ));
   }
 
   return (
-    <div>
-      <h1>Saved city</h1>
-      <div>{saveCityEl}</div>
+    <div className="saved__cities">
+      <h1 className="saved__cities-header">Saved Cities</h1>
+      <div className="saved__cities-card">{saveCityEl}</div>
     </div>
   );
 };

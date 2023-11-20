@@ -4,7 +4,6 @@ import axios from "axios";
 import Weather from "./components/Weather/Weather";
 import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
-// import City from "./components/City/City";
 import SaveCity from "./components/SaveCity/SaveCity";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
@@ -136,10 +135,11 @@ function App() {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     color: "white"
-
   }
   const dayTime = {
-    backgroundImage: `url("https://art.ngfiles.com/images/390000/390126_conquestus_sky-daytime.jpg?f1448575610")`
+    backgroundImage: `url("https://www.ecolur.org/files/news/2023/02/022731150180.jpg")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
   }
 
   const checkHours = (realHour >= 17) ? nightTime : dayTime ;
@@ -159,8 +159,9 @@ function App() {
             city={city}
             handleCityPost={handleCityPost}
           />
-      </div>
+        </div>
       <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
+      </div>
     </div>
   );
 }
