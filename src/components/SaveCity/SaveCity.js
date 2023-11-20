@@ -5,9 +5,9 @@ const SaveCity = (props) => {
   if (props.saveCityData) {
     saveCityEl = props.saveCityData.map((saveCity) => (
       <div key={saveCity.id}>
-        <h3 className="saved__cities-city">London{saveCity.city}</h3>
-        <p className="saved__cities-temperature">80{saveCity.temp}°C</p>
-        <p className="saved__cities-description">Rainy{saveCity.description}</p>
+        <h3 className="saved__cities-city">{saveCity.city}</h3>
+        <p className="saved__cities-temperature">{saveCity.temp}°C</p>
+        <p className="saved__cities-description">{saveCity.description}</p>
         {/* <p>{saveCity.windSpeed}</p>
         <p>{saveCity.windDeg}</p> */}
       </div>
