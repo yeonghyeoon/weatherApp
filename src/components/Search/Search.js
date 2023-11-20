@@ -5,7 +5,10 @@ const Search = (props) => {
   const searchLocation = (e) => {
     if (e.key === "Enter") {
       props.getData();
-    }
+      console.log(e)
+    } /**else if ((e.target.value == null)&& (e.key === "Enter") || (e.target.value == "")&& (e.key === "Enter")) {
+      alert("type location")
+    } **/
     return;
   };
 
