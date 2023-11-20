@@ -20,8 +20,9 @@
 }
 
 .search-btn {
-  background-color: white;
   border: none;
   margin-left: 2%;
-  background-color: rgba(250, 230, 194, 0.864);
+  background: none;
+  filter: invert(1);
+  height: 5vh;
 }/*# sourceMappingURL=Search.css.map */
