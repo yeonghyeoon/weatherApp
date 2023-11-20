@@ -18,13 +18,13 @@
         align-items: center;
         justify-content: space-between;
         margin: 2% 5% 2% 5%;
-        // filter: invert(1);
         width: 80%;
     }
 
     &__logo-menuLogo {
         width: 25px;
         height: 25px;
+        filter: invert(1);
     }
 
     &__logo-addingLogo {

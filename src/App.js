@@ -158,7 +158,7 @@ function App() {
   let realHour = realTime.getHours();
   // console.log(realHour); // commenting out for testing
   const nightTime = {
-    backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
+    backgroundImage: `url("https://images.unsplash.com/photo-1666287415044-2b28ebd6f96f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     color: "white",
@@ -190,6 +190,8 @@ function App() {
         <SaveCity
           saveCityData={saveCityData}
           handleSavedCity={handleSavedCity}
+          imgSrc={imgSrc}
+          getImg={getImg}
         />
       </div>
     </div>
