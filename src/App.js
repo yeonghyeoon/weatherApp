@@ -202,7 +202,7 @@ function App() {
 
           />
         </div>
-      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} deletingCities={deletingCities}/>
+      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} deletingCities={deletingCities} handleSavedCity={handleSavedCity}/>
       </div>
     </div>
   );
