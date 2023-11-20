@@ -47,8 +47,16 @@ const SaveCity = (props) => {
               </div>
             </div>
           </div>
-        );
-      });
+          {/* Delete city */}
+          <button
+          className="weather__button--delete"
+          onClick={(e) => {
+            props.handleCityDelete();
+          }}>
+            Remove from Favourite
+          </button>
+        </div>
+      ));
     }
     return null;
   };

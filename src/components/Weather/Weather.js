@@ -42,15 +42,15 @@ function Weather(props) {
       </div>
 
       {/* Save button */}
-      <button
-        className="weather__button"
+      {/* <button
+        className="weather__button--add"
         onClick={(e) => {
           e.stopPropagation();
           props.handleCityPost();
         }}
-      >
-        Add to Favourite
-      </button>
+      > */}
+        {/* Add to Favourite */}
+      {/* </button> */}
 
     </div>
   
