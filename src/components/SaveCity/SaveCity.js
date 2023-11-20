@@ -27,7 +27,7 @@ const SaveCity = (props) => {
   return (
     <div className="saved__cities">
       <h1 className="saved__cities-header">Saved city</h1>
-       <div className="saved__cities-section">{returnSaveCityList}</div>
+       <div className="saved__cities-section">{returnSaveCityList()}</div>
     </div>
   );
 };

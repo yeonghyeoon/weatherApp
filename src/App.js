@@ -164,7 +164,7 @@ function App() {
     color: "white",
   };
   const dayTime = {
-    backgroundImage: `url("https://www.shutterstock.com/image-photo/cloudy-sky-daytime-hot-weather-260nw-1052355494.jpg")`,
+    backgroundImage: `url("https://d12eu00glpdtk2.cloudfront.net/public/images/local/_760x500_clip_center-center_none/qatar-weather_200526_064356.jpg")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   };
