@@ -142,7 +142,7 @@ function App() {
           handleCityPost={handleCityPost}
         />
       </div>
-      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
+      <SaveCity saveCityData={saveCityData} />
     </div>
   );
 }

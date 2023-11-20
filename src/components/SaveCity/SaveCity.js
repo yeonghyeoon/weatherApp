@@ -1,17 +1,13 @@
 const SaveCity = (props) => {
-  let saveCityEl;
-  if (props.saveCityData) {
-    saveCityEl = props.saveCityData.map((saveCity) => (
-      <div key={saveCity.id}>
-        <h3>{saveCity.city}</h3>
-        <p>{saveCity.temp}</p>
-        <p>{saveCity.description}</p>
-        <p>{saveCity.windSpeed}</p>
-        <p>{saveCity.windDeg}</p>
-      </div>
-    ));
-  }
-
+  const saveCityEl = props.saveCityData.map((saveCity) => (
+    <div key={saveCity.id}>
+      <h3>{saveCity.city}</h3>
+      <p>{saveCity.temp}</p>
+      <p>{saveCity.description}</p>
+      <p>{saveCity.windSpeed}</p>
+      <p>{saveCity.windDeg}</p>
+    </div>
+  ));
   return (
     <div>
       <h1>Saved city</h1>
