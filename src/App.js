@@ -139,7 +139,9 @@ function App() {
 
   }
   const dayTime = {
-    backgroundImage: `url("https://art.ngfiles.com/images/390000/390126_conquestus_sky-daytime.jpg?f1448575610")`
+    backgroundImage: `url("https://www.ecolur.org/files/news/2023/02/022731150180.jpg")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
   }
 
   const checkHours = (realHour >= 17) ? nightTime : dayTime ;
