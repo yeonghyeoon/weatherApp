@@ -25,15 +25,18 @@
     &__logo-menuLogo {
         width: 25px;
         height: 25px;
+        filter: invert(1);
     }
 
     &__logo-addingLogo {
         width: 20px;
         height: 20px;
+        filter: invert(1)
     }
 
     &__btn {
         border: none;
+        background: none;
     }
 
 }

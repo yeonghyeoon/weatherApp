@@ -112,6 +112,39 @@ function App() {
     }
   };
 
+// handle city deleting
+  const handleCityDelete = () => {
+    if (city) {
+      axios
+        .delete(`${localURL}/cities`, { city: city })
+        .then((response) => {
+          const responseCityId = response.data.id; // get posted city id
+          const responseCityName = response.data.city; // get posted city name
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
+            )
+            .then((response) => {
+              // storing posted city data into an object
+              const cityData = {
+                id: responseCityId,
+                city: response.data.name,
+                temp: response.data.main.temp,
+                description: response.data.weather[0].description,
+                windSpeed: response.data.wind.speed,
+                windDegree: response.data.wind.deg,
+              };
+              // setting saveCityData with existing value
+              setSaveCityData([...saveCityData, cityData]);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+
   // getting city list from the
   useEffect(() => {
     axios
@@ -164,7 +197,7 @@ function App() {
     color: "white",
   };
   const dayTime = {
-    backgroundImage: `url("https://www.ecolur.org/files/news/2023/02/022731150180.jpg")`,
+    backgroundImage: `url("https://d12eu00glpdtk2.cloudfront.net/public/images/local/_760x500_clip_center-center_none/qatar-weather_200526_064356.jpg")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   };
@@ -173,7 +206,8 @@ function App() {
 
   return (
     <div className="App" style={checkHours}>
-      <Header />
+      <Header 
+        handleCityPost={handleCityPost}/>
       <div className="weather__background">
         <Search getData={getData} handleCity={handleCity} />
         <div className="weather__card">
@@ -185,12 +219,11 @@ function App() {
             time={time}
             city={city}
             handleCityPost={handleCityPost}
+            handleCityDelete={handleCityDelete}
+
           />
         </div>
-        <SaveCity
-          saveCityData={saveCityData}
-          handleSavedCity={handleSavedCity}
-        />
+      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
       </div>
     </div>
   );

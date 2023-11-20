@@ -19,15 +19,23 @@ const SaveCity = (props) => {
             <p className="saved__cities-description">{saveCity.description}</p>
             <p>{saveCity.windSpeed} km/h</p>
           </div>
+          {/* Delete city */}
+          <button
+          className="weather__button--delete"
+          onClick={(e) => {
+            props.handleCityDelete();
+          }}>
+            Remove from Favourite
+          </button>
         </div>
       ));
     }
   };
 
   return (
-    <div iclassName="saved__cities">
+    <div className="saved__cities">
       <h1 className="saved__cities-header">Saved city</h1>
-       <div className="saved__cities-section">{saveCityEl}</div>
+       <div className="saved__cities-section">{returnSaveCityList()}</div>
     </div>
   );
 };
