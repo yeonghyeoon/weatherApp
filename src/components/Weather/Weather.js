@@ -68,6 +68,7 @@ function Weather(props) {
         </div>
       
     </div>
+  
   );
 }
 
