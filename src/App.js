@@ -7,7 +7,6 @@ import Header from "./components/Header/Header";
 import SaveCity from "./components/SaveCity/SaveCity";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
-import nightSky from "../src/assets/images/nightSky.jpg";
 import nightIcons from "./data/nightIcons.json";
 function App() {
   const [city, setCity] = useState("");
@@ -239,6 +238,7 @@ function App() {
           handleSavedCity={handleSavedCity}
           imgSrc={imgSrc}
           getImg={getImg}
+          handleCityDelete={handleCityDelete}
         />
       </div>
     </div>
