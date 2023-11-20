@@ -124,37 +124,17 @@ function App() {
     }
   };
 
-  // handle city deleting
-  const handleCityDelete = () => {
-    if (city) {
-      axios
-        .delete(`${localURL}/cities`, { city: city })
-        .then((response) => {
-          const responseCityId = response.data.id; // get posted city id
-          const responseCityName = response.data.city; // get posted city name
-          axios
-            .get(
-              `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
-            )
-            .then((response) => {
-              // storing posted city data into an object
-              const cityData = {
-                id: responseCityId,
-                city: response.data.name,
-                temp: response.data.main.temp,
-                description: response.data.weather[0].description,
-                windSpeed: response.data.wind.speed,
-                windDegree: response.data.wind.deg,
-              };
-              // setting saveCityData with existing value
-              setSaveCityData([...saveCityData, cityData]);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
+// handle city deleting
+  const deletingCities = (e) => {
+    console.log(e.target.id)
+    const citiesId = e.target.id
+    axios.delete(`${localURL}/cities/${citiesId}`)
+    .then((response) => {
+      console.log(response.data)
+      setSaveCityData(response.data)
+    })
+  }
+
 
   // getting city list from the
   useEffect(() => {
@@ -229,17 +209,13 @@ function App() {
             wind={wind}
             time={time}
             city={city}
-            handleCityPost={handleCityPost}
-            handleCityDelete={handleCityDelete}
+            // handleCityPost={handleCityPost}
+            
+
           />
         </div>
-        <SaveCity
-          saveCityData={saveCityData.length > 0 ? saveCityData : ""}
-          handleSavedCity={handleSavedCity}
-          imgSrc={imgSrc}
-          getImg={getImg}
-          handleCityDelete={handleCityDelete}
-        />
+      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} deletingCities={deletingCities}/>
+
       </div>
     </div>
   );
