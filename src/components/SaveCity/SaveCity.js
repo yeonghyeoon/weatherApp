@@ -1,3 +1,5 @@
+import '../SaveCity/SaveCity.scss'
+
 const SaveCity = (props) => {
   let saveCityEl;
   if (props.saveCityData) {
