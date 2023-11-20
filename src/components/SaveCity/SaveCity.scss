@@ -19,14 +19,22 @@
         border-radius: 5px;
         width: 100%;
         margin-bottom: 16px;
+        justify-content: space-between;
     }
 
     &-data {
         display: flex;
         flex-direction: column;
+        margin-right: 77%;
     }
 
     &-image {
         width: 80px;
     }
+}
+
+.weather__button--delete {
+    width: 55px;
+    height: 35px;
+    // margin-left: 75%
 }
