@@ -40,6 +40,7 @@ function Weather(props) {
 
       {/* Save button */}
       <button
+        className="weather__button"
         onClick={(e) => {
           e.stopPropagation();
           props.handleCityPost();
