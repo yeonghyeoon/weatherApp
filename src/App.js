@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import SaveCity from "./components/SaveCity/SaveCity";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
+import nightSky from "../src/assets/images/nightSky.jpg";
 import nightIcons from "./data/nightIcons.json";
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
     });
     return src;
   };
-
+  
   // handle current city
   const handleCity = (cityName) => {
     setCity(cityName);
@@ -127,20 +128,37 @@ function App() {
     }
   }, [saveCity]);
 
+  let realTime = new Date();
+  let realHour = realTime.getHours();
+  console.log(realHour)
+  const nightTime = {
+    backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    color: "white"
+
+  }
+  const dayTime = {
+    backgroundImage: `url("https://art.ngfiles.com/images/390000/390126_conquestus_sky-daytime.jpg?f1448575610")`
+  }
+
+  const checkHours = (realHour >= 17) ? nightTime : dayTime ;
+  
   return (
-    <div className="App">
+    <div className="App" style={checkHours}>
       <Header />
-      <Search getData={getData} handleCity={handleCity} />
-      <div className="weather__card">
-        <WeatherDisplay imgSrc={imgSrc} city={city} />
-        <Weather
-          weatherData={weatherData}
-          mainData={mainData}
-          wind={wind}
-          time={time}
-          city={city}
-          handleCityPost={handleCityPost}
-        />
+      <div className="weather__background">
+        <Search getData={getData} handleCity={handleCity} />
+        <div className="weather__card">
+          <WeatherDisplay imgSrc={imgSrc} city={city} />
+          <Weather
+            weatherData={weatherData}
+            mainData={mainData}
+            wind={wind}
+            time={time}
+            city={city}
+            handleCityPost={handleCityPost}
+          />
       </div>
       <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
     </div>
