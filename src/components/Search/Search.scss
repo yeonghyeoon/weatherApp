@@ -2,20 +2,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2%;
 }
 .input-location {
     width: 50vw;
-    height: 3vh;
+    height: 5vh;
     border-radius: 8px;
     border: 1px solid black;
+    padding-left: 10px;
 
     &::placeholder {
-        padding-left: 10px;
+        padding-left: 5px;
     }
 }
 
 .search-btn {
     background-color: white;
     border: none;
-    
+    margin-left: 2%;
+    background-color: rgba(250, 230, 194, 0.864);
 }

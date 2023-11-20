@@ -1,0 +1,25 @@
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weather__city {
+  font-size: 20px;
+  text-align: center;
+}
+.weather__title {
+  font-size: 14px;
+  text-align: center;
+}
+.weather__stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.weather__speed, .weather__degrees {
+  width: 75px;
+}
+.weather__subtext {
+  text-align: center;
+}/*# sourceMappingURL=Weather.css.map */
