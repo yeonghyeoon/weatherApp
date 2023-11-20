@@ -1,15 +1,18 @@
 import shareLogo from "../../assets/icons/send.png";
 import gpsLogo from "../../assets/icons/gps.svg";
-import appLogo from "../../assets/icons/applogo.png"
-import './Header.scss';
+import './Header.css';
+import menuLogo from "../../assets/icons/menu.png";
+import addingLogo from "../../assets/icons/plus.png";
 
 const Header = () => {
+  
+  
+
   return (
     <div className="header">
-      <img src={appLogo} className="appLogo" alt="app-logo" />
-      <div className="header__icons">
-        <img src={shareLogo} className="shareLogo" alt="send-logo" />
-        <img src={gpsLogo} className="gpsLogo" alt="gps-logo" />  
+      <div className="header__logo">
+        <img src={menuLogo} className="header__logo-menuLogo" alt="send-logo" />
+        <button type="button" className="header__btn"><img src={addingLogo} className="header__logo-addingLogo" alt="gps-logo" /></button>  
       </div>
       
       {/* <h1>Weather App</h1> */}
