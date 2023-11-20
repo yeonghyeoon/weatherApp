@@ -4,7 +4,6 @@ import axios from "axios";
 import Weather from "./components/Weather/Weather";
 import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
-import City from "./components/City/City";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
 import nightSky from "../src/assets/images/nightSky.jpg";
@@ -61,7 +60,6 @@ function App() {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     color: "white"
-
   }
   const dayTime = {
     backgroundImage: `url("https://art.ngfiles.com/images/390000/390126_conquestus_sky-daytime.jpg?f1448575610")`
