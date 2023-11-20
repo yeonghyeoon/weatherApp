@@ -64,10 +64,7 @@ function Weather(props) {
             <h2 className="weather__title">Wind <br/> Degrees</h2>
         </div>
           <p className="weather__subtext">{props.wind.deg}°</p>
-        </div>
       </div>
-      
-    </div>
   );
 }
 
