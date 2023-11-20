@@ -4,6 +4,13 @@
     align-items: center;
     padding: 12px 0;
 
+    &__details {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+    }
+
     &__city {
         font-size: 20px;
         text-align: center;
@@ -40,7 +47,7 @@
         justify-content: space-evenly;
         align-items: center;
         padding: 20px 0;
-        width: 290px;
+        width: 100%;
         background-color: rgba(0, 0, 0, 0.147);
         border-radius: 20px;
         }
@@ -65,7 +72,6 @@
 
     &__subtext {
         text-align: center;
-        padding: 12px 0;
         font-weight: 600;
 
     }
@@ -77,6 +83,16 @@
 
     &__degrees-icon {
         width: 50px;
+    }
+
+    &__button {
+        border: 1px white solid;
+        background-color: black;
+        height: 35px;
+        width: 135px;
+        border-radius: 20px;
+        color: white;
+        margin: 1rem 0;
     }
 
 }
