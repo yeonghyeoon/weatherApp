@@ -9,7 +9,6 @@ import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
 import nightSky from "../src/assets/images/nightSky.jpg";
 import nightIcons from "./data/nightIcons.json";
-
 function App() {
   const [city, setCity] = useState("");
   const [imgSrc, setImgSrc] = useState("");
@@ -19,23 +18,30 @@ function App() {
   const [time, setTime] = useState("");
   const [saveCity, setSaveCity] = useState("");
   const [saveCityData, setSaveCityData] = useState([]);
+  const [warningMsgClass, setWarningMsgClass] = useState("");
   const localURL = process.env.REACT_APP_URL;
 
   const getData = () => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-      )
-      .then((response) => {
-        setWeatherData(response.data.weather[0]);
-        setMainData(response.data.main);
-        setWind(response.data.wind);
-        setTime(response.data.timezone);
-        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (!city) {
+      console.log("cannot find city, please enter city name");
+      return;
+    } else {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        )
+        .then((response) => {
+          setWeatherData(response.data.weather[0]);
+          setMainData(response.data.main);
+          setWind(response.data.wind);
+          setTime(response.data.timezone);
+          setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+          setWarningMsgClass(" ");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   // get image
@@ -49,13 +55,32 @@ function App() {
     });
     return src;
   };
-  
+
   // handle current city
   const handleCity = (cityName) => {
     setCity(cityName);
   };
 
-  // // handle city posting
+  // handle saved City data
+  const handleSavedCity = (cityName) => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+      )
+      .then((response) => {
+        setCity(cityName);
+        setWeatherData(response.data.weather[0]);
+        setMainData(response.data.main);
+        setWind(response.data.wind);
+        setTime(response.data.timezone);
+        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // handle city posting
   const handleCityPost = () => {
     if (city) {
       axios
@@ -119,32 +144,33 @@ function App() {
             };
             saveCityDataArray.push(cityData);
           })
+          .then(() => {
+            setSaveCityData(saveCityDataArray); // set saveCityData
+          })
           .catch((err) => {
             console.log(err);
           });
       });
-      setSaveCityData(saveCityDataArray); // set saveCityData
     }
   }, [saveCity]);
 
   let realTime = new Date();
   let realHour = realTime.getHours();
-  console.log(realHour)
+  // console.log(realHour); // commenting out for testing
   const nightTime = {
     backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    color: "white"
-  }
+    color: "white",
+  };
   const dayTime = {
-    backgroundImage: `url("https://www.ecolur.org/files/news/2023/02/022731150180.jpg")`,
+    backgroundImage: `url("https://www.shutterstock.com/image-photo/cloudy-sky-daytime-hot-weather-260nw-1052355494.jpg")`,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-  }
+    backgroundSize: "cover",
+  };
 
-  const checkHours = (realHour >= 17
-    ) ? nightTime : dayTime ;
-  
+  const checkHours = realHour >= 17 ? nightTime : dayTime;
+
   return (
     <div className="App" style={checkHours}>
       <Header />
@@ -161,9 +187,8 @@ function App() {
             handleCityPost={handleCityPost}
           />
         </div>
-      </div>
       <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
-      
+      </div>
     </div>
   );
 }
