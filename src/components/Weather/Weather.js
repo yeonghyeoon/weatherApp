@@ -5,20 +5,23 @@ function Weather(props) {
 
   return (
     <div className="weather__details">
-
       <p className="weather__subtext">{time}</p>
 
       <h3 className="weather__city">{props.city.toUpperCase()}</h3>
 
       <div className="weather__temperature">
         <p className="weather__temperature-text">{props.mainData.temp}</p>
-        <img className="weather__temperature-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thermometer-celsius.svg" />
+        <img
+          className="weather__temperature-icon"
+          src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thermometer-celsius.svg"
+        />
       </div>
-      
+
       <p className="weather__subtext">{props.weatherData.description}</p>
       <p className="weather__subtext">{props.weatherData.main}</p>
 
       <div className="weather__stats">
+
 
         <div className="weather__speed">
           <img className="weather__speed-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/wind.svg"/>
@@ -48,7 +51,7 @@ function Weather(props) {
       >
         Add to Favourite
       </button>
-      
+
     </div>
   
   );
