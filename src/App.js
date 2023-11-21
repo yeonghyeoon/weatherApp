@@ -57,6 +57,7 @@ function App() {
   // handle current city
   const handleCity = (cityName) => {
     setCity(cityName);
+    // test comments
   };
 
   // handle saved City data
