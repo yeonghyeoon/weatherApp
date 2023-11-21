@@ -15,14 +15,13 @@ function App() {
   const [mainData, setMainData] = useState("");
   const [wind, setWind] = useState("");
   const [time, setTime] = useState("");
-  const [saveCity, setSaveCity] = useState("");
+  const [saveCity, setSaveCity] = useState([]);
   const [saveCityData, setSaveCityData] = useState([]);
-  const [warningMsgClass, setWarningMsgClass] = useState("");
   const localURL = process.env.REACT_APP_URL;
 
   const getData = () => {
     if (!city) {
-      console.log("cannot find city, please enter city name");
+      alert("Please enter city name");
       return;
     } else {
       axios
@@ -35,7 +34,6 @@ function App() {
           setWind(response.data.wind);
           setTime(response.data.timezone);
           setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
-          setWarningMsgClass(" ");
         })
         .catch((error) => {
           console.log(error);
@@ -118,17 +116,17 @@ function App() {
     }
   };
 
-// handle city deleting
-  const deletingCities = (e) => {
-    console.log(e.target.id)
-    const citiesId = e.target.id
-    axios.delete(`${localURL}/cities/${citiesId}`)
-    .then((response) => {
-      console.log(response.data)
-      setSaveCityData(response.data)
-    })
-  }
-
+  // handle city deleting
+  const handleCityDelete = (cityId) => {
+    axios
+      .delete(`${localURL}/cities/${cityId}`)
+      .then((response) => {
+        setSaveCity(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // getting city list from the
   useEffect(() => {
@@ -136,7 +134,7 @@ function App() {
       .get(`${localURL}/cities`)
       .then((response) => {
         setSaveCity(response.data);
-        console.log(response.data);
+        console.log(saveCity.length);
       })
       .catch((err) => {
         console.log(err);
@@ -208,7 +206,11 @@ function App() {
 
           />
         </div>
-      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} deletingCities={deletingCities}/>
+        <SaveCity
+          saveCityData={saveCityData.length > 0 ? saveCityData : ""}
+          handleSavedCity={handleSavedCity}
+          handleCityDelete={handleCityDelete}
+        />
 
       </div>
     </div>
