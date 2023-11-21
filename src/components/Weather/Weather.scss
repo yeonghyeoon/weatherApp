@@ -14,7 +14,7 @@
     &__city {
         font-size: 20px;
         text-align: center;
-        padding: 1rem 0;
+        padding: .5rem 0;
     }
 
     &__temperature {
@@ -27,7 +27,6 @@
         font-size: 32px;
         font-weight: bold;
         text-align: center;
-        padding: 1rem 0;
     }
 
     &__temperature-icon {
@@ -46,7 +45,8 @@
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
-        padding: 20px 0;
+        padding: 0 0 10px 0;
+        margin: 0.5rem 0;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.147);
         border-radius: 20px;
@@ -92,7 +92,7 @@
         width: 135px;
         border-radius: 20px;
         color: white;
-        margin: 1rem 0;
+        margin: 0 0 0.5rem 0;
     }
 
 }

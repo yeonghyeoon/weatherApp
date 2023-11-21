@@ -3,19 +3,22 @@ import gpsLogo from "../../assets/icons/gps.svg";
 import './Header.scss';
 import appLogo from "../../assets/icons/applogo.png"
 import menuLogo from "../../assets/icons/menu.png";
-import addingLogo from "../../assets/icons/plus.png";
+import addingLogo from "../../assets/icons/add logo.png";
 
-const Header = () => {
+const Header = (props) => {
   
   
 
   return (
     <div className="header">
-      <img className="header__logo" src={appLogo} alt="app-logo" />
       <div className="header__icons">
         <img src={menuLogo} className="header__logo-menuLogo" alt="send-logo" />
-        <button type="button" className="header__btn">
-          <img src={addingLogo} className="header__logo-addingLogo" alt="gps-logo" />
+        <img className="header__logo" src={appLogo} alt="app-logo" />
+        <button type="button" className="header__btn" onClick={(e) => {
+          e.stopPropagation();
+          props.handleCityPost();
+          }}>
+         <img src={addingLogo} className="header__logo-addingLogo" alt="gps-logo" />
         </button>  
       </div>
       

@@ -7,9 +7,7 @@ import Header from "./components/Header/Header";
 import SaveCity from "./components/SaveCity/SaveCity";
 import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
 import { apiKey } from "./components/utilities/api";
-import nightSky from "../src/assets/images/nightSky.jpg";
 import nightIcons from "./data/nightIcons.json";
-
 function App() {
   const [city, setCity] = useState("");
   const [imgSrc, setImgSrc] = useState("");
@@ -17,25 +15,30 @@ function App() {
   const [mainData, setMainData] = useState("");
   const [wind, setWind] = useState("");
   const [time, setTime] = useState("");
-  const [saveCity, setSaveCity] = useState("");
+  const [saveCity, setSaveCity] = useState([]);
   const [saveCityData, setSaveCityData] = useState([]);
   const localURL = process.env.REACT_APP_URL;
 
   const getData = () => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-      )
-      .then((response) => {
-        setWeatherData(response.data.weather[0]);
-        setMainData(response.data.main);
-        setWind(response.data.wind);
-        setTime(response.data.timezone);
-        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (!city) {
+      alert("Please enter city name");
+      return;
+    } else {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        )
+        .then((response) => {
+          setWeatherData(response.data.weather[0]);
+          setMainData(response.data.main);
+          setWind(response.data.wind);
+          setTime(response.data.timezone);
+          setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   // get image
@@ -49,15 +52,37 @@ function App() {
     });
     return src;
   };
-  
+
   // handle current city
   const handleCity = (cityName) => {
     setCity(cityName);
   };
 
-  // // handle city posting
+  // handle saved City data
+  const handleSavedCity = (cityName) => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+      )
+      .then((response) => {
+        setCity(cityName);
+        setWeatherData(response.data.weather[0]);
+        setMainData(response.data.main);
+        setWind(response.data.wind);
+        setTime(response.data.timezone);
+        setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // handle city posting
   const handleCityPost = () => {
-    if (city) {
+    if (!city) {
+      alert("Please enter city name");
+      return;
+    } else {
       axios
         .post(`${localURL}/cities`, { city: city })
         .then((response) => {
@@ -81,10 +106,26 @@ function App() {
               setSaveCityData([...saveCityData, cityData]);
             });
         })
+        .then(() => {
+          return;
+        })
         .catch((err) => {
           console.log(err);
+          return;
         });
     }
+  };
+
+  // handle city deleting
+  const handleCityDelete = (cityId) => {
+    axios
+      .delete(`${localURL}/cities/${cityId}`)
+      .then((response) => {
+        setSaveCity(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // getting city list from the
@@ -93,6 +134,7 @@ function App() {
       .get(`${localURL}/cities`)
       .then((response) => {
         setSaveCity(response.data);
+        console.log(saveCity.length);
       })
       .catch((err) => {
         console.log(err);
@@ -119,34 +161,36 @@ function App() {
             };
             saveCityDataArray.push(cityData);
           })
+          .then(() => {
+            setSaveCityData(saveCityDataArray); // set saveCityData
+          })
           .catch((err) => {
             console.log(err);
           });
       });
-      setSaveCityData(saveCityDataArray); // set saveCityData
     }
   }, [saveCity]);
 
   let realTime = new Date();
   let realHour = realTime.getHours();
-  console.log(realHour)
+  // console.log(realHour); // commenting out for testing
   const nightTime = {
-    backgroundImage: `url("https://www.nps.gov/crmo/learn/nature/images/IMG_0373_1.jpg?maxwidth=650&autorotate=false")`,
+    backgroundImage: `url("https://images.unsplash.com/photo-1666287415044-2b28ebd6f96f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    color: "white"
-  }
+    color: "white",
+  };
   const dayTime = {
-    backgroundImage: `url("https://www.ecolur.org/files/news/2023/02/022731150180.jpg")`,
+    backgroundImage: `url("https://d12eu00glpdtk2.cloudfront.net/public/images/local/_760x500_clip_center-center_none/qatar-weather_200526_064356.jpg")`,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-  }
+    backgroundSize: "cover",
+  };
 
-  const checkHours = (realHour >= 17) ? nightTime : dayTime ;
-  
+  const checkHours = realHour >= 17 ? nightTime : dayTime;
+
   return (
     <div className="App" style={checkHours}>
-      <Header />
+      <Header handleCityPost={handleCityPost} />
       <div className="weather__background">
         <Search getData={getData} handleCity={handleCity} />
         <div className="weather__card">
@@ -157,10 +201,17 @@ function App() {
             wind={wind}
             time={time}
             city={city}
-            handleCityPost={handleCityPost}
+            // handleCityPost={handleCityPost}
+            
+
           />
         </div>
-      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} />
+        <SaveCity
+          saveCityData={saveCityData.length > 0 ? saveCityData : ""}
+          handleSavedCity={handleSavedCity}
+          handleCityDelete={handleCityDelete}
+        />
+
       </div>
     </div>
   );

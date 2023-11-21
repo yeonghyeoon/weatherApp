@@ -10,5 +10,9 @@
     {
         "mainName": "rain",
         "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thunderstorms-rain.svg"
+    },
+    {
+        "mainName": "mist",
+        "src": "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-night-fog.svg"
     }
 ]

@@ -1,15 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  background-color: rgba(250, 230, 194, 0.864);
+  background-color: #eeeeff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 8%;
 }
 
+.weather {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .weather__card {
-  width: 80%;
+  border: 1px white solid;
+  background-color: rgba(255, 255, 255, 0.294);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.weather__background {
+  width: 85%;
+  border-radius: 25px;
+  background-size: cover;
 }/*# sourceMappingURL=App.css.map */
