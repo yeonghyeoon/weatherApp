@@ -16,14 +16,13 @@ function App() {
   const [mainData, setMainData] = useState("");
   const [wind, setWind] = useState("");
   const [time, setTime] = useState("");
-  const [saveCity, setSaveCity] = useState("");
+  const [saveCity, setSaveCity] = useState([]);
   const [saveCityData, setSaveCityData] = useState([]);
-  const [warningMsgClass, setWarningMsgClass] = useState("");
   const localURL = process.env.REACT_APP_URL;
 
   const getData = () => {
     if (!city) {
-      console.log("cannot find city, please enter city name");
+      alert("Please enter city name");
       return;
     } else {
       axios
@@ -36,7 +35,6 @@ function App() {
           setWind(response.data.wind);
           setTime(response.data.timezone);
           setImgSrc(getImg(response.data.weather[0].main.toLowerCase()));
-          setWarningMsgClass(" ");
         })
         .catch((error) => {
           console.log(error);
@@ -82,54 +80,12 @@ function App() {
 
   // handle city posting
   const handleCityPost = () => {
-    console.log(saveCity);
-    // check if current city is listed in saved city lists
-    if (city) {
-      saveCity.forEach((cityElement) => {
-        if (cityElement.city === city.toLocaleLowerCase()) {
-          console.log("Already saved");
-          return;
-        } else {
-          axios
-            .post(`${localURL}/cities`, { city: city })
-            .then((response) => {
-              const responseCityId = response.data.id; // get posted city id
-              const responseCityName = response.data.city; // get posted city name
-              axios
-                .get(
-                  `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
-                )
-                .then((response) => {
-                  // storing posted city data into an object
-                  const cityData = {
-                    id: responseCityId,
-                    city: response.data.name,
-                    temp: response.data.main.temp,
-                    description: response.data.weather[0].description,
-                    windSpeed: response.data.wind.speed,
-                    windDegree: response.data.wind.deg,
-                  };
-                  // setting saveCityData with existing value
-                  setSaveCityData([...saveCityData, cityData]);
-                });
-            })
-            .then(() => {
-              return;
-            })
-            .catch((err) => {
-              console.log(err);
-              return;
-            });
-        }
-      });
-    }
-  };
-
-  // handle city deleting
-  const handleCityDelete = () => {
-    if (city) {
+    if (!city) {
+      alert("Please enter city name");
+      return;
+    } else {
       axios
-        .delete(`${localURL}/cities`, { city: city })
+        .post(`${localURL}/cities`, { city: city })
         .then((response) => {
           const responseCityId = response.data.id; // get posted city id
           const responseCityName = response.data.city; // get posted city name
@@ -151,10 +107,26 @@ function App() {
               setSaveCityData([...saveCityData, cityData]);
             });
         })
+        .then(() => {
+          return;
+        })
         .catch((err) => {
           console.log(err);
+          return;
         });
     }
+  };
+
+  // handle city deleting
+  const handleCityDelete = (cityId) => {
+    axios
+      .delete(`${localURL}/cities/${cityId}`)
+      .then((response) => {
+        setSaveCity(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // getting city list from the
@@ -163,7 +135,7 @@ function App() {
       .get(`${localURL}/cities`)
       .then((response) => {
         setSaveCity(response.data);
-        console.log(response.data);
+        console.log(saveCity.length);
       })
       .catch((err) => {
         console.log(err);
@@ -237,6 +209,7 @@ function App() {
         <SaveCity
           saveCityData={saveCityData.length > 0 ? saveCityData : ""}
           handleSavedCity={handleSavedCity}
+          handleCityDelete={handleCityDelete}
         />
       </div>
     </div>
