@@ -81,46 +81,40 @@ function App() {
 
   // handle city posting
   const handleCityPost = () => {
-    console.log(saveCity);
-    // check if current city is listed in saved city lists
-    if (city) {
-      saveCity.forEach((cityElement) => {
-        if (cityElement.city === city.toLocaleLowerCase()) {
-          console.log("Already saved");
-          return;
-        } else {
+    if (!city) {
+      alert("Please enter city name");
+      return;
+    } else {
+      axios
+        .post(`${localURL}/cities`, { city: city })
+        .then((response) => {
+          const responseCityId = response.data.id; // get posted city id
+          const responseCityName = response.data.city; // get posted city name
           axios
-            .post(`${localURL}/cities`, { city: city })
+            .get(
+              `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
+            )
             .then((response) => {
-              const responseCityId = response.data.id; // get posted city id
-              const responseCityName = response.data.city; // get posted city name
-              axios
-                .get(
-                  `https://api.openweathermap.org/data/2.5/weather?q=${responseCityName}&appid=${apiKey}&units=metric`
-                )
-                .then((response) => {
-                  // storing posted city data into an object
-                  const cityData = {
-                    id: responseCityId,
-                    city: response.data.name,
-                    temp: response.data.main.temp,
-                    description: response.data.weather[0].description,
-                    windSpeed: response.data.wind.speed,
-                    windDegree: response.data.wind.deg,
-                  };
-                  // setting saveCityData with existing value
-                  setSaveCityData([...saveCityData, cityData]);
-                });
-            })
-            .then(() => {
-              return;
-            })
-            .catch((err) => {
-              console.log(err);
-              return;
+              // storing posted city data into an object
+              const cityData = {
+                id: responseCityId,
+                city: response.data.name,
+                temp: response.data.main.temp,
+                description: response.data.weather[0].description,
+                windSpeed: response.data.wind.speed,
+                windDegree: response.data.wind.deg,
+              };
+              // setting saveCityData with existing value
+              setSaveCityData([...saveCityData, cityData]);
             });
-        }
-      });
+        })
+        .then(() => {
+          return;
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
     }
   };
 
@@ -209,7 +203,7 @@ function App() {
             wind={wind}
             time={time}
             city={city}
-            // handleCityPost={handleCityPost}
+            handleCityPost={handleCityPost}
             
 
           />

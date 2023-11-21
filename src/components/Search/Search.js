@@ -24,7 +24,7 @@ const Search = (props) => {
         onKeyDown={searchLocation}
       />
       <button type="button" className="search-btn" onClick={props.getData}>
-        <img src={searchIcon} />
+        <img src={searchIcon}alt="search-icon"/>
       </button>
     </div>
   );

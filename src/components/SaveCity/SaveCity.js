@@ -1,23 +1,11 @@
 import "../SaveCity/SaveCity.scss";
-import nightIcons from "../../data/nightIcons.json";
 
 const SaveCity = (props) => {
   const returnSaveCityList = () => {
     if (props.saveCityData.length > 0) {
       return props.saveCityData.map((saveCity) => {
-        const savedCityIcon = (weatherIcon) => {
-          let src;
-          nightIcons.forEach((img) => {
-            if (img.mainName === weatherIcon) {
-              src = img.src;
-              console.log(src);
-              console.log(img.mainName === weatherIcon);
-            }
-          });
-          return src;
-        };
 
-        const iconSrc = savedCityIcon(saveCity.description.toLowerCase());
+        // const iconSrc = savedCityIcon(saveCity.description.toLowerCase());
 
         return (
           <div
@@ -45,7 +33,7 @@ const SaveCity = (props) => {
                 <img className="saved__cities-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/wind.svg" alt="wind" />
               </div>
             </div>
-            {/* Delete city */}
+            {/* Delete city
             <button
               className="weather__button--delete"
               onClick={(e) => {
@@ -53,23 +41,23 @@ const SaveCity = (props) => {
               }}
             >
               Remove from Favourite
-            </button>
+            </button> */}
           </div>
         );
       });
 
-          {/* Delete city */}
-          <button
-          className="weather__button--delete"
-          onClick={(e) => {
-            props.deletingCities();
-          }}>
-            Remove
-          </button>
-        </div>
-      ));
+      //     {/* Delete city */}
+      //     <button
+      //     className="weather__button--delete"
+      //     onClick={(e) => {
+      //       props.deletingCities();
+      //     }}>
+      //       Remove
+      //     </button>
+      //   </div>
+      // ));
     }
-    return null;
+    // return null;
   };
 
   return (
