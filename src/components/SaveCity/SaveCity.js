@@ -56,6 +56,7 @@ const SaveCity = (props) => {
         </div>
       ));
     }
+    // return null;
   };
 
   return (
@@ -65,4 +66,5 @@ const SaveCity = (props) => {
     </div>
   );
 };
+
 export default SaveCity;

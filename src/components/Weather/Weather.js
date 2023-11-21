@@ -10,10 +10,11 @@ function Weather(props) {
       <h3 className="weather__city">{props.city.toUpperCase()}</h3>
 
       <div className="weather__temperature">
-        <p className="weather__temperature-text">{props.mainData.temp}</p>
+        <p className="weather__temperature-text">{props.mainData.temp}°</p>
         <img
           className="weather__temperature-icon"
           src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thermometer-celsius.svg"
+          alt="temperature-icon"
         />
       </div>
 
@@ -24,7 +25,7 @@ function Weather(props) {
 
 
         <div className="weather__speed">
-          <img className="weather__speed-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/wind.svg"/>
+          <img className="weather__speed-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/wind.svg" alt="speed-icon"/>
             <div className="weather__speed-header">
               <h2 className="weather__title">Wind <br/> Speed</h2>
             </div>
@@ -32,7 +33,7 @@ function Weather(props) {
         </div>
 
         <div className="weather__degrees">
-          <img className="weather__degrees-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/compass.svg"/>
+          <img className="weather__degrees-icon" src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/compass.svg" alt="degrees-icon"/>
           <div className="weather__degrees-header">
               <h2 className="weather__title">Wind <br/> Degrees</h2>
           </div>
