@@ -201,7 +201,7 @@ function App() {
             wind={wind}
             time={time}
             city={city}
-            // handleCityPost={handleCityPost}
+            handleCityPost={handleCityPost}
             
 
           />
