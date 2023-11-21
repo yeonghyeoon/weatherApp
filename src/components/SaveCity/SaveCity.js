@@ -58,16 +58,9 @@ const SaveCity = (props) => {
         );
       });
 
-          {/* Delete city */}
-          <button
-          className="weather__button--delete"
-          onClick={(e) => {
-            props.deletingCities();
-          }}>
-            Remove
-          </button>
-        </div>
-      ));
+          
+      
+    
     }
     return null;
   };
