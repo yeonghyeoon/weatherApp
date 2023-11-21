@@ -56,6 +56,7 @@ function App() {
   // handle current city
   const handleCity = (cityName) => {
     setCity(cityName);
+    // test comments
   };
 
   // handle saved City data
@@ -201,7 +202,7 @@ function App() {
             wind={wind}
             time={time}
             city={city}
-            // handleCityPost={handleCityPost}
+            handleCityPost={handleCityPost}
             
 
           />

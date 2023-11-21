@@ -1,5 +1,3 @@
-import shareLogo from "../../assets/icons/send.png";
-import gpsLogo from "../../assets/icons/gps.svg";
 import './Header.scss';
 import appLogo from "../../assets/icons/applogo.png"
 import menuLogo from "../../assets/icons/menu.png";
@@ -18,11 +16,9 @@ const Header = (props) => {
           e.stopPropagation();
           props.handleCityPost();
           }}>
-         <img src={addingLogo} className="header__logo-addingLogo" alt="gps-logo" />
+        <img src={addingLogo} className="header__logo-addingLogo" alt="gps-logo" />
         </button>  
       </div>
-      
-      {/* <h1>Weather App</h1> */}
       
     </div>
   ) 
