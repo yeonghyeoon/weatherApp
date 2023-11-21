@@ -206,16 +206,12 @@ function App() {
 
           />
         </div>
-<<<<<<< HEAD
-      <SaveCity saveCityData={saveCityData.length > 0 ? saveCityData : ""} deletingCities={deletingCities} handleSavedCity={handleSavedCity}/>
-=======
         <SaveCity
           saveCityData={saveCityData.length > 0 ? saveCityData : ""}
           handleSavedCity={handleSavedCity}
           handleCityDelete={handleCityDelete}
         />
 
->>>>>>> 6caf676be5c40f30afbce62a1c6614d8522669d5
       </div>
     </div>
   );
