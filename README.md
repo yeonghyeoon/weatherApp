@@ -1,70 +1,100 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [Weather App](https://github.com/yeonghyeoon/weatherApp.git) 
 
-## Available Scripts
 
-In the project directory, you can run:
+The weather app uses [OpenWeather API](https://openweathermap.org/api) to get real-time weather data for different cities and display it on the client site. It was developed during the day-long [BrainStation](https://brainstation.io/online/software-engineering-bootcamp) hackathon 
+by [Xochil Hurtado](https://github.com/xrhurtado), [YeongHyeon Jeong](https://github.com/yeonghyeoon), and [Tsering Dhondup](https://github.com/Tsedhondup)
+## Features
 
-### `npm start`
+- Form to enter a city name
+- Search button
+- Save favorite cities in the Node server
+- Delete and Add cities from the Node server
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Client:** React.js, SASS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Server:** Node.js, Express.js
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## [Installation-Back-end](https://github.com/Tsedhondup/weatherApp-API.git)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone the repository with npm:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+ git clone https://github.com/Tsedhondup/weatherApp-API.git
 
-### Code Splitting
+```
+Navigate into the project directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+cd weatherApp-API
 
-### Analyzing the Bundle Size
+```
+Install dependencies:
+```bash
+npm install
+```
+    
+## [Installation-Front-end](https://github.com/yeonghyeoon/weatherApp.git)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Clone the repository with npm:
 
-### Making a Progressive Web App
+```bash
+ git clone https://github.com/yeonghyeoon/weatherApp.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+Navigate into the project directory
 
-### Advanced Configuration
+```bash
+cd weatherApp
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+Install dependencies:
+```bash
+npm install
+```
+    
+## Usage
+**Server:**
 
-### Deployment
+Navigate into the project directory
+```bash
+cd weatherApp-API
+```
+Start Express server with nodemon
+```bash
+npx nodemon index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Client:**
 
-### `npm run build` fails to minify
+Navigate into the project directory
+```bash
+cd weatherApp
+```
+Start React weatherApp
+```bash
+npm Start
+```
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![App Screenshot](https://raw.githubusercontent.com/Tsedhondup/Portfolio/refs/heads/develop/src/assets/image/weather-app.jpg)
+
+
+## Author
+
+- [Xochil Hurtado](https://github.com/xrhurtado)
+- [YeongHyeon Jeong](https://github.com/yeonghyeoon)
+- [Tsering Dhondup](https://github.com/Tsedhondup)
+
